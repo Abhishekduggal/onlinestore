@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
-// const massive = require("massive");
+const massive = require("massive");
 // const session = require("express-session");
 // const passport = require("passport");
 // const strategy = require("./strategy");
@@ -15,11 +15,11 @@ app.use(bodyParser.json());
 
 //---------------massive connection string------------------------
 
-// massive(process.env.CONNECTION_STRING)
-//   .then(db => {
-//     app.set("db", db);
-//   })
-//   .catch(e => console.log(e));
+massive(process.env.CONNECTION_STRING)
+  .then(db => {
+    app.set("db", db);
+  })
+  .catch(e => console.log(e));
 
 //---------------session to hold store login & cart info-------------------------
 
