@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const massive = require("massive");
-// const session = require("express-session");
+const session = require("express-session");
 // const passport = require("passport");
 // const strategy = require("./strategy");
 const path = require("path");
@@ -23,16 +23,16 @@ massive(process.env.CONNECTION_STRING)
 
 //---------------session to hold store login & cart info-------------------------
 
-// app.use(
-//   session({
-//     secret: process.env.SESSION_SECRET,
-//     resave: false,
-//     saveUninitialized: false,
-//     cookie: {
-//       maxAge: 1000 * 60 * 60 * 24 * 7 * 16 //16 weeks
-//     }
-//   })
-// );
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24 * 7 * 16 //16 weeks
+    }
+  })
+);
 
 //----------------Passport-----------------
 
